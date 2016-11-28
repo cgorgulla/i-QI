@@ -1,0 +1,19 @@
+<simulation verbosity="debug">
+	<interface type="socket">
+		<socket type="inet">
+			<address>localhost</address>
+			<port>31415</port>
+		</socket>
+	</interface>
+   	<atoms>
+   		<type>
+   			<file type="pdbx">molecule.pdbx</file>
+		</type>
+   	</atoms>
+	<potential type="QMMM1">
+		<constraints>
+			<file type="xml">constraints.xml</file>
+		</constraints>
+		<forceconstant>1</forceconstant>
+	</potential>
+</simulation>
