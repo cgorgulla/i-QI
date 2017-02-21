@@ -7,7 +7,7 @@
 	</interface>
    	<atoms>
    		<type>
-   			<file type="pdbx">molecule.pdbx</file>
+   			<file type="pdbx">molecule3.pdbx</file>
 		</type>
    	</atoms>
 	<potential type="QMMM1">

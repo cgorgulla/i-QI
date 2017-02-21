@@ -95,6 +95,8 @@ class Simulation(object):
             
             elif message == InterfaceMessages.IN_POSDATA:
                 self.cell.cell_matrix, self.cell.cell_matrix_inverse, self.atoms.positions = self.server_interface.recv_data(self.cell.cell_matrix, self.cell.cell_matrix_inverse, self.atoms.positions)
+                self.cell.cell_size = np.array([self.cell.cell_matrix[0,0], self.cell.cell_matrix[1,1], self.cell.cell_matrix[2,2]], np.float64)
+                self.cell.cell_size_invert = 1. / self.cell.cell_size
                 self.potential.compute_interactions()
                 self.status = self.Status.havedata
                         
@@ -107,6 +109,7 @@ class Simulation(object):
                 self.server_interface.send_all(np.int32(1), "size of extra-string") # size of extra string
                 self.server_interface.send_all(" ", "extra string") # extra string
                 self.status = self.Status.ready
+                
             
             elif message == InterfaceMessages.IN_EXIT:
                 self.status = self.Status.exiting
@@ -115,5 +118,3 @@ class Simulation(object):
             else:
                 info("Unrecognized message received from server: " + message, self.verbosity.quiet)
                 quit_simulation()
-                
-                

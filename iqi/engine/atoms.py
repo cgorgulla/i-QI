@@ -26,6 +26,7 @@ from iqi.utils.quit_simulation import *
 import numpy as np
 
 class Atoms(object):
+    # Atom ID is atom index (of PDB file) -> starting at 1 (only VMD starts at 0)
     
     def __init__(self, inputdata, simulation):
         
@@ -82,7 +83,6 @@ class Atoms(object):
         atom_id = 0
         if self.file_type == "pdbx":
             with open(self.file_name, "r") as inputfile:
-                atom_types = []
                 for line in inputfile:
                     if "ATOM" in line or "HETATM" in line:     
                         atom_type = line[80:82]
@@ -90,7 +90,8 @@ class Atoms(object):
                             self.atom_ids_QC.append(atom_id)
                         elif atom_type in "MC":
                             self.atom_ids_MC.append(atom_id)
-                        else:
+                        elif atom_type not in ["MU", "QU"]:
                             info("Unsupported atom type scecified in the file " + self.file_name, self.simulation.verbosity.quiet)
+                            info("Specified atom type: " + atom_type + " in atom with index " + atom_id, self.simulation.verbosity.quiet)
                             quit_simulation()
                         atom_id += 1

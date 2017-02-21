@@ -40,7 +40,7 @@ class QMMM1(Potential):
         self.forces = np.zeros((simulation.atoms.total_number,3), np.float64)
         self.constraints = None
         self.total_energy = np.float64(0)
-        self.pressure_virial_tensor = np.array([[1,2,3],[0,4,5],[0,0,6]], np.float64)
+        self.pressure_virial_tensor = np.array([[0,0,0],[0,0,0],[0,0,0]], np.float64)
         self.input_data_splitted = {}
 
         # Loop for storing the inner xml tags of the input data
@@ -68,17 +68,23 @@ class QMMM1(Potential):
     # Method for computing the interactions and related properties: forces, potentials, virials
     def compute_interactions(self):
 
+        # Cleaning up past values
+        self.forces = np.zeros((self.simulation.atoms.total_number,3), np.float64)
+        self.total_energy = np.float64(0)
+        self.pressure_virial_tensor = np.array([[0,0,0],[0,0,0],[0,0,0]], np.float64)
+
+
         # Updating the constraints
         self.constraints.update()
         
         # Computing the distances of the MC atoms to the sphere centers
-        distances_MC_SC, distance_vectors = self.simulation.cell.distances(self.constraints.sphere_atom_ids, self.simulation.atoms.atom_ids_MC)
+        distances_MC_SC, distance_vectors_MC_SC = self.simulation.cell.distances(self.constraints.sphere_atom_ids, self.simulation.atoms.atom_ids_MC)
         
         # Computing the forces on the MC atoms and adding the contributions to the total potential 
         for i, sphere in enumerate(self.constraints.spheres):
             for j, atom_id_MC in enumerate(self.simulation.atoms.atom_ids_MC):
                 if distances_MC_SC[i,j] < sphere.radius_QC:
-                    self.forces[atom_id_MC,:] += (sphere.radius_QC - distances_MC_SC[i,j]) * distance_vectors[i,j,:] * self.force_constant
+                    self.forces[atom_id_MC,:] += - (sphere.radius_QC - distances_MC_SC[i,j]) * (distance_vectors_MC_SC[i,j,:] / distances_MC_SC[i,j]) * self.force_constant
                     self.total_energy += 0.5 * (sphere.radius_QC - distances_MC_SC[i,j])**2 * self.force_constant
 
         # Computing the outer radius of the spheres
@@ -89,12 +95,15 @@ class QMMM1(Potential):
         for i, sphere in enumerate(self.constraints.spheres):
             for j, distance in enumerate(sphere.contained_atom_distances):
                 if distance > sphere.radius_MC:
-                    self.forces[sphere.contained_atom_ids[j],:] += - (distance - sphere.radius_MC) * (sphere.contained_atom_distance_vectors[j] / sphere.contained_atom_distances[j]) * self.force_constant
+                    self.forces[sphere.contained_atom_ids[j],:] += (distance - sphere.radius_MC) * (sphere.contained_atom_distance_vectors[j] / sphere.contained_atom_distances[j]) * self.force_constant
                     self.total_energy += 0.5 * (distance - sphere.radius_MC)**2 * self.force_constant
         
        
         # Computing the pressure virial tensor 
-        
+        for i in range(1, self.simulation.atoms.total_number):
+            for j in range(1,3,):
+                for k in range(j,3):
+                    self.pressure_virial_tensor[j,k] = self.pressure_virial_tensor[j,k] + self.forces[i,j]*self.simulation.atoms.positions[i,k] 
 
 
         

@@ -29,6 +29,8 @@ class Cell(object):
         
         self.cell_matrix = np.zeros((3,3))
         self.cell_matrix_inverse = np.zeros((3,3))
+        self.cell_size = np.zeros(3,np.float64)
+        self.cell_size_invert = np.zeros(3, np.float64)
         self.simulation = simulation
     
     # atoms set 1 are the tips, atom set 2 are the endings
@@ -39,22 +41,23 @@ class Cell(object):
         
         for atom_1_id in range(0, len(atom_set_1)):
             for atom_2_id in range(0, len(atom_set_2)):
-                x = self.simulation.atoms.positions[atom_set_1[atom_1_id], :]
-                y = self.simulation.atoms.positions[atom_set_2[atom_2_id], :]
-                dxy = self.distance_vector(x, y)
-                distance_vectors[atom_1_id, atom_2_id, :] = dxy
-                distances[atom_1_id, atom_2_id] = np.linalg.norm(dxy)
+                x1 = self.simulation.atoms.positions[atom_set_1[atom_1_id], :]
+                x2 = self.simulation.atoms.positions[atom_set_2[atom_2_id], :]
+                dx2x1 = self.distance_vector(x1, x2)
+                distance_vectors[atom_1_id, atom_2_id, :] = dx2x1
+                distances[atom_1_id, atom_2_id] = np.linalg.norm(dx2x1)
                 
         return distances, distance_vectors
 
-    # Distance vector, x is tip, y is ending
-    def distance_vector(self, x, y): 
-        dxy = np.zeros(3,np.float64)
-        for i in range(0, len(x)):
-            dxy[i] = x[i] - y[i]
-            if dxy[i] < - self.cell_matrix[i,i] * 0.5: # diagonal elements = size
-                dxy[i] += self.cell_matrix[i,i]
-            elif dxy[i] >= self.cell_matrix[i,i] * 0.5:
-                dxy[i] -= self.cell_matrix[i,i]
+    # Distance vector, x1 is tip, x2 is ending
+    def distance_vector(self, x1, x2): 
+        # dx1x2 = x1 - x2
+        #for i in range(0,len(x1)):
+        #    dx1x2[i] -= self.cell_matrix[i,i] * round(dx1x2[i] * self.cell_matrix_inverse[i,i])
         
-        return dxy
+        # print dx1x2
+        dx2x1 = x1 - x2
+        dx2x1 -= self.cell_size * np.round(dx2x1 * self.cell_size_invert)
+        # print dx1x2
+   
+        return dx2x1
