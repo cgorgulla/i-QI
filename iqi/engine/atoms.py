@@ -26,7 +26,7 @@ from iqi.utils.quit_simulation import *
 import numpy as np
 
 class Atoms(object):
-    # Atom ID is atom index (of PDB file) -> starting at 1 (only VMD starts at 0)
+    # Atom ID is atom index of atom (according to the position when reading in the input pdbx file), first index is 0. But only internally. The index we specify externally in the constraints file start at 1 (position in pdbx file), we substract automatically "1"
     
     def __init__(self, inputdata, simulation):
         

@@ -122,7 +122,7 @@ verbosity = Verbosity()
 def help():
     """Prints out a help string."""
 
-    print """usage:  %s input """ % sys.argv[0]
+    print """Usage: iqi <input filename> """
 
 
 def program_heading():
