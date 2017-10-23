@@ -38,3 +38,10 @@ class Potential(object):
   
         pass
 
+
+    #def write_force(self):
+    #    pass
+
+#    <output file_prefix='iqi.out.'>
+#        <trajectory filename="forces">forces</trajectory>
+#    </output>

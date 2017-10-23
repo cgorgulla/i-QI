@@ -59,7 +59,10 @@ class Simulation(object):
             elif name == "atoms":
                 self.input_data_splitted["atoms"] = xml_node
             elif name == "potential":
-                self.input_data_splitted["potential"] = xml_node                     
+                self.input_data_splitted["potential"] = xml_node
+            #elif name == "output":
+            #    self.input_data_splitted["output"] = xml_node
+
             elif name is not "_text":
                 xml_tag_error("<simulation>", self)
                 quit_simulation()
@@ -77,7 +80,7 @@ class Simulation(object):
     
     # Method for running the simulation         
     def run(self):
-        
+        step_counter = 1
         while True:
             message = self.server_interface.recv_message()
             
@@ -105,12 +108,19 @@ class Simulation(object):
                 self.server_interface.send_all(self.potential.total_energy, "total energy")
                 self.server_interface.send_all(self.atoms.total_number, "number of atoms")
                 self.server_interface.send_all(self.potential.forces.flatten(), "forces")
-                self.server_interface.send_all(self.potential.pressure_virial_tensor, "virial tensor") # TODO proper shape virial (transpose???)
+                self.server_interface.send_all(self.potential.pressure_virial_tensor, "virial tensor")
                 self.server_interface.send_all(np.int32(1), "size of extra-string") # size of extra string
                 self.server_interface.send_all(" ", "extra string") # extra string
                 self.status = self.Status.ready
-                
-            
+                if self.verbosity.high:
+                    print "\n\nForces of timestep " + str(step_counter)
+                    print "-------------------------------------------------------------------------------------------------"
+                    print("Atom-Index          X-coordinate          Y-coordinate          Z-coordinate")
+                    for i in range(1, self.atoms.total_number + 1):
+                        print("%10d          %12.5e          %12.5e          %12.5e" % (i, self.potential.forces[i-1,0], self.potential.forces[i-1,1], self.potential.forces[i-1,2]))
+                    print "-------------------------------------------------------------------------------------------------"
+                    step_counter += 1
+
             elif message == InterfaceMessages.IN_EXIT:
                 self.status = self.Status.exiting
                 break

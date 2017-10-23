@@ -49,19 +49,29 @@ class QMMM1(Potential):
                 self.input_data_splitted["constraints"] = xml_node
             elif name == "forceconstant":
                 self.input_data_splitted["forceconstant"] = xml_node
+            elif name == "force_distribution":
+                self.input_data_splitted["force_distribution"] = xml_node
             elif name is not "_text":
-                xml_tag_error("<constraints>", self)
+                xml_tag_error("<Potential>", self)
                 quit_simulation()
 
         # Initializing the instance variables
         # Initializing the constraints object
         self.constraints = Constraints(self.input_data_splitted["constraints"], self.simulation)
         # Setting the force constant
-        if is_number(self.input_data_splitted["forceconstant"].fields[0][1]): 
-            self.force_constant = np.float64(self.input_data_splitted["forceconstant"].fields[0][1])
+        if is_number(self.input_data_splitted["forceconstant"].fields[0][1].strip()):
+            self.force_constant = np.float64(self.input_data_splitted["forceconstant"].fields[0][1].strip())
         else:
             xml_tag_error("<force constant>", self)
             quit_simulation()
+
+        # Setting the force distribution
+        if self.input_data_splitted["force_distribution"].fields[0][1].strip() == "atom" or self.input_data_splitted["force_distribution"].fields[0][1].strip() == "molecule":
+            self.force_distribution = self.input_data_splitted["force_distribution"].fields[0][1].strip()
+        else:
+            xml_tag_error("<force_distribution>", self)
+            quit_simulation()
+
 
 
 
@@ -73,19 +83,27 @@ class QMMM1(Potential):
         self.total_energy = np.float64(0)
         self.pressure_virial_tensor = np.array([[0,0,0],[0,0,0],[0,0,0]], np.float64)
 
-
         # Updating the constraints
         self.constraints.update()
         
         # Computing the distances of the MC atoms to the sphere centers
         distances_MC_SC, distance_vectors_MC_SC = self.simulation.cell.distances(self.constraints.sphere_atom_ids, self.simulation.atoms.atom_ids_MC)
         
-        # Computing the forces on the MC atoms and adding the contributions to the total potential 
+        # Computing the forces on the MC atoms and adding the contributions to the total potential
         for i, sphere in enumerate(self.constraints.spheres):
             for j, atom_id_MC in enumerate(self.simulation.atoms.atom_ids_MC):
                 if distances_MC_SC[i,j] < sphere.radius_QC:
                     self.forces[atom_id_MC,:] += - (sphere.radius_QC - distances_MC_SC[i,j]) * (distance_vectors_MC_SC[i,j,:] / distances_MC_SC[i,j]) * self.force_constant
                     self.total_energy += 0.5 * (sphere.radius_QC - distances_MC_SC[i,j])**2 * self.force_constant
+
+                    # Applying the same forces to the entire molecule
+                    if self.force_distribution == "molecule":
+                        for k, molecule_atom_id in enumerate(self.simulation.atoms.molecule_to_atoms[self.simulation.atoms.atom_to_molecule[atom_id_MC]]):
+                            if molecule_atom_id != atom_id_MC:
+                                self.forces[molecule_atom_id,:] += - (sphere.radius_QC - distances_MC_SC[i,j]) * (distance_vectors_MC_SC[i,j,:] / distances_MC_SC[i,j]) * self.force_constant
+                                self.total_energy += 0.5 * (sphere.radius_QC - distances_MC_SC[i,j])**2 * self.force_constant
+
+
 
         # Computing the outer radius of the spheres
         for i, sphere in enumerate(self.constraints.spheres):
@@ -97,17 +115,16 @@ class QMMM1(Potential):
                 if distance > sphere.radius_MC:
                     self.forces[sphere.contained_atom_ids[j],:] += (distance - sphere.radius_MC) * (sphere.contained_atom_distance_vectors[j] / sphere.contained_atom_distances[j]) * self.force_constant
                     self.total_energy += 0.5 * (distance - sphere.radius_MC)**2 * self.force_constant
-        
-       
+
+                    # Applying the same forces to the entire molecule
+                    if self.force_distribution == "molecule":
+                        for k, molecule_atom_id in enumerate(self.simulation.atoms.molecule_to_atoms[self.simulation.atoms.atom_to_molecule[sphere.contained_atom_ids[j]]]):
+                            if molecule_atom_id != sphere.contained_atom_ids[j]:
+                                self.forces[molecule_atom_id, :] += (distance - sphere.radius_MC) * (sphere.contained_atom_distance_vectors[j] / sphere.contained_atom_distances[j]) * self.force_constant
+                                self.total_energy += 0.5 * (distance - sphere.radius_MC) ** 2 * self.force_constant
+
         # Computing the pressure virial tensor 
         for i in range(1, self.simulation.atoms.total_number):
             for j in range(1,3,):
                 for k in range(j,3):
-                    self.pressure_virial_tensor[j,k] = self.pressure_virial_tensor[j,k] + self.forces[i,j]*self.simulation.atoms.positions[i,k] 
-
-
-        
-        
-    
-        
-        
+                    self.pressure_virial_tensor[j,k] = self.pressure_virial_tensor[j,k] + self.forces[i,j]*self.simulation.atoms.positions[i,k]

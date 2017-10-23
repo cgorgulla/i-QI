@@ -61,7 +61,7 @@ class Constraints(object):
         # Initializing the instance variables
         if self.input_data_splitted["file"].attribs["type"] == "xml":
             if self.input_data_splitted["file"].fields[0][0] == "_text":
-                self.constraints_file_name = self.input_data_splitted["file"].fields[0][1]
+                self.constraints_file_name = self.input_data_splitted["file"].fields[0][1].strip()
         
         # Preparing the constraints input data as xml tree 
         with open(self.constraints_file_name, "r") as constraints_file:

@@ -31,6 +31,7 @@ class Atoms(object):
     def __init__(self, inputdata, simulation):
         
         # Instance variables
+        # Basic
         self.simulation = simulation
         self.inputdata = inputdata
         self.file_type = None
@@ -39,18 +40,27 @@ class Atoms(object):
         self.atom_ids_QC = []
         self.atom_ids_MC = []
         self.positions = np.zeros((self.total_number,3))
-        
+        # Molecule information
+        self.atom_to_chain = []
+        self.atom_to_residue = []
+        self.atom_to_molecule = []
+        self.molecule_names = set()
+        self.molecule_to_atoms = {}
+
         # Determining the atom types
         self.atom_types()
         self.total_number_QC = len(self.atom_ids_QC)
         self.total_number_MC =  len(self.atom_ids_MC)
+
+        # Preparing the molecule information
+        self.prepare_molecules()
 
 
     def filename(self):
         if self.inputdata.fields[0][0] == "type":
             node_atom_type = self.inputdata.fields[0][1]
             if node_atom_type.fields[0][0] == "file":
-                node_atom_type_file = node_atom_type.fields[0][1] 
+                node_atom_type_file = node_atom_type.fields[0][1]
                 if "type" in node_atom_type_file.attribs:
                     self.file_type = node_atom_type_file.attribs["type"]                    
                     if node_atom_type_file.fields[0][0]== "_text":
@@ -95,3 +105,31 @@ class Atoms(object):
                             info("Specified atom type: " + atom_type + " in atom with index " + atom_id, self.simulation.verbosity.quiet)
                             quit_simulation()
                         atom_id += 1
+
+                        # Molecule information
+                        chain = line[21]
+                        residue = line[22:26].strip()
+                        if chain == "R" or chain == "L":
+                            molecule = chain
+                        elif chain == "W":
+                            molecule = chain + residue
+                        else:
+                            raise ValueError('Unsupported chain identifyer (' + chain + ') found in the input pdbx file. Supported are only R, L and W.')
+                        self.atom_to_molecule.append(molecule)
+
+
+    def prepare_molecules(self):
+
+        # Creating the set of names of all molecules
+        self.molecule_names = set(self.atom_to_molecule)
+
+        # Filling the molecule_to_atoms dictionary with the molecule names
+        for molecule_name in self.molecule_names:
+            self.molecule_to_atoms[molecule_name] = set()
+
+        # Adding the atoms to the molecule_to_atoms dictionary
+        for atom_index in range(1, self.total_number, 1):
+            molecule=self.atom_to_molecule[atom_index]
+            self.molecule_to_atoms[molecule].add(atom_index)
+
+

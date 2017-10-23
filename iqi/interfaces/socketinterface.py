@@ -47,9 +47,9 @@ class SocketInterface(ServerInterface, socket.socket):
             self.port = None
             for (name, xml_node) in self.inputdata_socket.fields:
                 if name == "address":
-                    self.address = xml_node.fields[0][1]
+                    self.address = xml_node.fields[0][1].strip()
                 elif name == "port":
-                    self.port = xml_node.fields[0][1]
+                    self.port = xml_node.fields[0][1].strip()
                 elif name != "_text":
                     xml_tag_error("<socket>", simulation)
             
@@ -67,11 +67,12 @@ class SocketInterface(ServerInterface, socket.socket):
 
             for (name, xml_node) in self.inputdata_socket.fields:
                 if name == "address":
-                    self.address = xml_node.fields[0][1]
+                    self.address = xml_node.fields[0][1].strip()
                 elif name != "_text":
                     xml_tag_error("<socket>", simulation)
             
             if self.address is not None:
+                print("/tmp/ipi_" + self.address)
                 self.socket_to_server.connect("/tmp/ipi_" + self.address)
                 info("Connected to server via unix domain socket with socket path: " + "/tmp/ipi_" + self.address, self.simulation.verbosity.medium)
             else:
@@ -86,7 +87,7 @@ class SocketInterface(ServerInterface, socket.socket):
             buffer = str(buffer)
             incoming_data += buffer
             data_size_received += len(buffer)
-        info("Received mesage from server:" + incoming_data, self.simulation.verbosity.high)
+        info("Received message from server:" + incoming_data, self.simulation.verbosity.high)
         return incoming_data
     
     def recv_init(self):
@@ -134,4 +135,4 @@ class SocketInterface(ServerInterface, socket.socket):
 
     def send_message(self, message):
         self.socket_to_server.sendall(message)
-        info("Sent mesage to server: " + message, self.simulation.verbosity.high)
+        info("Sent message to server: " + message, self.simulation.verbosity.high)
