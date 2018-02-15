@@ -26,15 +26,15 @@ from iqi.utils.various import is_number
 import numpy as np
 from iqi.engine.qmmm1.constraints import *
 
-__all__ = ["QMMM1"]
+__all__ = ["Quasar"]
 
 
-class QMMM1(Potential):
+class Quasar(Potential):
     
     def __init__(self, inputdata, simulation):
         
         # Initialization of the base class
-        super(QMMM1, self).__init__(inputdata, simulation)
+        super(Quasar, self).__init__(inputdata, simulation)
         
         # Instance variables
         self.forces = np.zeros((simulation.atoms.total_number,3), np.float64)

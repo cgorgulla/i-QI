@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af054743-1dab-42aa-bf7d-ea24b7c9818d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/i-QI.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/iqi/engine/qmmm1/qmmm1.py" afterPath="$PROJECT_DIR$/iqi/engine/qmmm1/quasar.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/constraints.xml" afterPath="$PROJECT_DIR$/constraints.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iqi/engine/atoms.py" afterPath="$PROJECT_DIR$/iqi/engine/atoms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iqi/engine/qmmm1/constraints.py" afterPath="$PROJECT_DIR$/iqi/engine/qmmm1/constraints.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iqi/engine/simulation.py" afterPath="$PROJECT_DIR$/iqi/engine/simulation.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iqi/interfaces/serverinterface.py" afterPath="$PROJECT_DIR$/iqi/interfaces/serverinterface.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iqi/utils/io/io_xml.py" afterPath="$PROJECT_DIR$/iqi/utils/io/io_xml.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iqi/engine/qmmm1/quasar.py" afterPath="$PROJECT_DIR$/iqi/engine/qmmm1/quasar.py" />
     </list>
     <ignored path="i-QI.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -69,8 +58,8 @@
       <file leaf-file-name="constraints.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/constraints.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="27" lean-forward="false" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
+            <state relative-caret-position="45">
+              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -96,11 +85,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="quasar.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="quasar.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/iqi/engine/qmmm1/quasar.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state relative-caret-position="187">
+              <caret line="20" column="8" lean-forward="true" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
               <folding>
                 <element signature="e#681#715#0" expanded="true" />
               </folding>
@@ -108,10 +97,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="constraints.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="constraints.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/iqi/engine/qmmm1/constraints.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="770">
+            <state relative-caret-position="960">
               <caret line="64" column="8" lean-forward="true" selection-start-line="64" selection-start-column="8" selection-end-line="64" selection-end-column="8" />
               <folding>
                 <element signature="e#681#720#0" expanded="true" />
@@ -185,8 +174,8 @@
       <file leaf-file-name="io_xml.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/iqi/utils/io/io_xml.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="82" column="26" lean-forward="true" selection-start-line="82" selection-start-column="26" selection-end-line="82" selection-end-column="26" />
+            <state relative-caret-position="165">
+              <caret line="11" column="62" lean-forward="true" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -203,7 +192,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>f</find>
       <find>fi</find>
       <find>field</find>
       <find>fields</find>
@@ -233,6 +221,7 @@
       <find>Constraint</find>
       <find>xml</find>
       <find>inputdata</find>
+      <find>atom_id</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -279,6 +268,7 @@
         <option value="$PROJECT_DIR$/iqi/engine/simulation.py" />
         <option value="$PROJECT_DIR$/constraints.xml" />
         <option value="$PROJECT_DIR$/iqi/engine/qmmm1/constraints.py" />
+        <option value="$PROJECT_DIR$/iqi/engine/qmmm1/quasar.py" />
       </list>
     </option>
   </component>
@@ -791,7 +781,14 @@
       <option name="project" value="LOCAL" />
       <updated>1508753154276</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Name changes">
+      <created>1518698572069</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1518698572069</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView">
@@ -861,7 +858,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Upgrade to support the new HyperQ version and other improvements&#10;&#10;OV&#10;* Changed chain P to chain R&#10;* Stripping the whitespaces of values from the input file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Upgrade to support the new HyperQ version and other improvements&#10;&#10;OV&#10;* Changed chain P to chain R&#10;* Stripping the whitespaces of values from the input file" />
+    <MESSAGE value="Name changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Name changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1059,14 +1057,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iqi/utils/io/io_xml.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="82" column="26" lean-forward="true" selection-start-line="82" selection-start-column="26" selection-end-line="82" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/iqi/engine/cell.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="945">
@@ -1089,16 +1079,6 @@
           <caret line="92" column="19" lean-forward="true" selection-start-line="92" selection-start-column="19" selection-end-line="92" selection-end-column="19" />
           <folding>
             <element signature="e#681#713#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iqi/engine/qmmm1/quasar.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding>
-            <element signature="e#681#715#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1137,6 +1117,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/input3.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iqi/engine/qmmm1/constraints.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="960">
+          <caret line="64" column="8" lean-forward="true" selection-start-line="64" selection-start-column="8" selection-end-line="64" selection-end-column="8" />
+          <folding>
+            <element signature="e#681#720#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/iqi/engine/simulation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -1147,28 +1145,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/input3.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/constraints.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="27" lean-forward="false" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
+        <state relative-caret-position="45">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iqi/engine/qmmm1/constraints.py">
+    <entry file="file://$PROJECT_DIR$/iqi/utils/io/io_xml.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="770">
-          <caret line="64" column="8" lean-forward="true" selection-start-line="64" selection-start-column="8" selection-end-line="64" selection-end-column="8" />
+        <state relative-caret-position="165">
+          <caret line="11" column="62" lean-forward="true" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iqi/engine/qmmm1/quasar.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="20" column="8" lean-forward="true" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
           <folding>
-            <element signature="e#681#720#0" expanded="true" />
+            <element signature="e#681#715#0" expanded="true" />
           </folding>
         </state>
       </provider>
