@@ -29,7 +29,7 @@ class InterfaceMessages(object):
 
     MESSAGE_LENGTH = 12
 
-    # Recognized incomming messages
+    # Recognized incoming messages
     IN_INIT = "INIT        "
     IN_STATUS = "STATUS      "
     IN_POSDATA = "POSDATA     "

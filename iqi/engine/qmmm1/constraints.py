@@ -73,9 +73,9 @@ class Constraints(object):
             if name == "spheres":
                 for (name_2, xml_node_2) in xml_node.fields:
                     if name_2 == "sphere":
-                        if is_int(xml_node_2.attribs["atom_id"]):
-                            self.spheres.append(SphereConstraint(int(xml_node_2.attribs["atom_id"]) - 1))
-                            self.sphere_atom_ids.append(int(xml_node_2.attribs["atom_id"]) - 1)
+                        if is_int(xml_node_2.attribs["central_atom_id"]):
+                            self.spheres.append(SphereConstraint(int(xml_node_2.attribs["central_atom_id"]) - 1))
+                            self.sphere_atom_ids.append(int(xml_node_2.attribs["central_atom_id"]) - 1)
                         else:
                             info("The attribute \"atom_id\"  is not an integer.", simulation.verbosity.quiet)
                             quit_simulation()

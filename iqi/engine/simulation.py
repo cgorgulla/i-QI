@@ -43,6 +43,7 @@ class Simulation(object):
         self.server_interface = None
         self.potential = None
         self.input_data_splitted = {}
+        self.inputdata = inputdata
 
         # Printing verbosity information
         if "verbosity" in inputdata.attribs:

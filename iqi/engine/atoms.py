@@ -26,7 +26,7 @@ from iqi.utils.quit_simulation import *
 import numpy as np
 
 class Atoms(object):
-    # Atom ID is atom index of atom (according to the position when reading in the input pdbx file), first index is 0. But only internally. The index we specify externally in the constraints file start at 1 (position in pdbx file), we substract automatically "1"
+    # Atom ID is atom index of atom (according to the position when reading in the input pdbx file), first index is 0. But only internally. The index we specify externally in the constraints file start at 1 (position in pdbx file), we subtract automatically "1"
     
     def __init__(self, inputdata, simulation):
         
@@ -101,7 +101,7 @@ class Atoms(object):
                         elif atom_type in "MC":
                             self.atom_ids_MC.append(atom_id)
                         elif atom_type not in ["MU", "QU"]:
-                            info("Unsupported atom type scecified in the file " + self.file_name, self.simulation.verbosity.quiet)
+                            info("Unsupported atom type specified in the file " + self.file_name, self.simulation.verbosity.quiet)
                             info("Specified atom type: " + atom_type + " in atom with index " + atom_id, self.simulation.verbosity.quiet)
                             quit_simulation()
                         atom_id += 1
@@ -114,7 +114,7 @@ class Atoms(object):
                         elif chain == "W":
                             molecule = chain + residue
                         else:
-                            raise ValueError('Unsupported chain identifyer (' + chain + ') found in the input pdbx file. Supported are only R, L and W.')
+                            raise ValueError('Unsupported chain identifier (' + chain + ') found in the input pdbx file. Supported are only R, L and W.')
                         self.atom_to_molecule.append(molecule)
 
 

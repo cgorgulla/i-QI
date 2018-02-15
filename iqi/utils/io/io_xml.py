@@ -87,7 +87,7 @@ class xml_handler(ContentHandler):
    """Class giving general xml_reading methods.
 
    Uses the standard python xml_reader to read the different kinds of data.
-   Keeps track of the heirarchial nature of an xml file by recording the level
+   Keeps track of the hierarchical nature of an xml file by recording the level
    of nesting, so that the correct data and attributes can be associated with 
    the correct tag name. 
 
