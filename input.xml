@@ -10,10 +10,11 @@
    			<file type="pdbx">molecule.pdbx</file>
 		</type>
    	</atoms>
-	<potential type="QMMM1">
+	<potential type="QUASAR">
 		<constraints>
 			<file type="xml">constraints.xml</file>
 		</constraints>
 		<forceconstant>0.001</forceconstant>
+		<force_distribution>molecule</force_distribution>
 	</potential>
 </simulation>

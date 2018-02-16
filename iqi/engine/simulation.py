@@ -42,8 +42,8 @@ class Simulation(object):
         self.cell = Cell(self)
         self.server_interface = None
         self.potential = None
-        self.input_data_splitted = {}
         self.inputdata = inputdata
+        input_data_splitted = {}
 
         # Printing verbosity information
         if "verbosity" in inputdata.attribs:
@@ -56,11 +56,11 @@ class Simulation(object):
         # Loop for storing the inner xml tags of the input data
         for (name, xml_node) in inputdata.fields:
             if name == "interface":
-                self.input_data_splitted["interface"] = xml_node
+                input_data_splitted["interface"] = xml_node
             elif name == "atoms":
-                self.input_data_splitted["atoms"] = xml_node
+                input_data_splitted["atoms"] = xml_node
             elif name == "potential":
-                self.input_data_splitted["potential"] = xml_node
+                input_data_splitted["potential"] = xml_node
             #elif name == "output":
             #    self.input_data_splitted["output"] = xml_node
 
@@ -72,12 +72,12 @@ class Simulation(object):
         # Initializing the interface to the server
         if self.input_data_splitted["interface"].attribs["type"] == "socket":               
             self.server_interface = SocketInterface(self.input_data_splitted["interface"], self)
-        # Initialzing the atoms object
+        # Initializing the atoms object
         self.atoms = Atoms(self.input_data_splitted["atoms"], self)
         # Initializing the potential
-        if self.input_data_splitted["potential"].attribs["type"] == "QMMM1":
-            import iqi.engine.qmmm1.qmmm1
-            self.potential = iqi.engine.qmmm1.qmmm1.QMMM1(self.input_data_splitted["potential"], self)
+        if self.input_data_splitted["potential"].attribs["type"] == "QUASAR":
+            import iqi.engine.quasar.quasar
+            self.potential = iqi.engine.quasar.quasar.QUASAR(self.input_data_splitted["potential"], self)
     
     # Method for running the simulation         
     def run(self):

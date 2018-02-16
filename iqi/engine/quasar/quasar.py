@@ -24,7 +24,7 @@ Classes:
 from iqi.engine.potential import * 
 from iqi.utils.various import is_number
 import numpy as np
-from iqi.engine.qmmm1.constraints import *
+from iqi.engine.quasar.constraints import *
 
 __all__ = ["Quasar"]
 
@@ -102,7 +102,6 @@ class Quasar(Potential):
                             if molecule_atom_id != atom_id_MC:
                                 self.forces[molecule_atom_id,:] += - (sphere.radius_QC - distances_MC_SC[i,j]) * (distance_vectors_MC_SC[i,j,:] / distances_MC_SC[i,j]) * self.force_constant
                                 self.total_energy += 0.5 * (sphere.radius_QC - distances_MC_SC[i,j])**2 * self.force_constant
-
 
 
         # Computing the outer radius of the spheres
