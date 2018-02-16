@@ -1,5 +1,4 @@
 """
-Copyright (C) 2013, Joshua More and Michele Ceriotti
 Copyright (C) 2016, Christoph Gorgulla
 
 This file is part of i-QI.
