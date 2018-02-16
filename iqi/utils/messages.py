@@ -1,29 +1,21 @@
-"""Utility functions for outputting messages, diagnostics and errors'
-
+"""
 Copyright (C) 2013, Joshua More and Michele Ceriotti
+Copyright (C) 2016, Christoph Gorgulla
 
-This program is free software: you can redistribute it and/or modify
+This file is part of i-QI.
+
+i-QI is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-This program is distributed in the hope that it will be useful,
+Foobar is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see <http.//www.gnu.org/licenses/>.
-
-
-Classes:
-   Verbosity: Concise class to check the selected level of output
-
-Functions:
-   banner:    Prints the program welcome "screen"
-   help:      Prints the input syntax help
-   info:      Prints some information to standard output, depending on the level of verbosity
-   warning:   Same as info, but with a "!W!" prefix and optionally printing a stack trace
+along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 import traceback, sys

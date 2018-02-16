@@ -1,41 +1,21 @@
-"""Contains the functions used to read the input file and print the checkpoint
-files with xml formatting.
-
+"""
 Copyright (C) 2013, Joshua More and Michele Ceriotti
+Copyright (C) 2016, Christoph Gorgulla
 
-This program is free software: you can redistribute it and/or modify
+This file is part of i-QI.
+
+i-QI is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-This program is distributed in the hope that it will be useful,
+Foobar is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see <http.//www.gnu.org/licenses/>.
-
-
-Functions:
-   xml_node: Class to handle a particular xml tag.
-   xml_handler: Class giving general xml data reading methods. 
-   xml_parse_string: Parses a string made from a section of a xml input file.
-   xml_parse_file: Parses an entire xml input file.
-   read_type: Reads a string and outputs data of a specified type.
-   read_float: Reads a string and outputs a float.
-   read_int: Reads a string and outputs an integer.
-   read_bool: Reads a string and outputs a boolean.
-   read_list: Reads a string and outputs a list.
-   read_array: Reads a string and outputs an array.
-   read_tuple: Reads a string and outputs a tuple.
-   read_dict: Reads a string and outputs a dictionary.
-   write_type: Writes a string from data of a specified type.
-   write_list: Writes a string from a list.
-   write_tuple: Writes a string from a tuple.
-   write_float: Writes a string from a float.
-   write_bool: Writes a string from a boolean.
-   write_dict: Writes a string from a dictionary.
+along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 __all__ = ['xml_node', 'xml_handler', 'xml_parse_string', 'xml_parse_file',

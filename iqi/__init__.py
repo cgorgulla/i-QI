@@ -1,1 +1,1 @@
-_author_ = 'Christoph'
+_author_ = 'Christoph Gorgulla'
