@@ -66,14 +66,14 @@ class Simulation(object):
         
         # Initializing the instance variables
         # Initializing the interface to the server
-        if self.input_data_splitted["interface"].attribs["type"] == "socket":               
-            self.server_interface = SocketInterface(self.input_data_splitted["interface"], self)
+        if input_data_splitted["interface"].attribs["type"] == "socket":
+            self.server_interface = SocketInterface(input_data_splitted["interface"], self)
         # Initializing the atoms object
-        self.atoms = Atoms(self.input_data_splitted["atoms"], self)
+        self.atoms = Atoms(input_data_splitted["atoms"], self)
         # Initializing the potential
-        if self.input_data_splitted["potential"].attribs["type"] == "QUASAR":
+        if input_data_splitted["potential"].attribs["type"] == "QUASAR":
             import iqi.engine.quasar.quasar
-            self.potential = iqi.engine.quasar.quasar.QUASAR(self.input_data_splitted["potential"], self)
+            self.potential = iqi.engine.quasar.quasar.Quasar(input_data_splitted["potential"], self)
     
     # Method for running the simulation         
     def run(self):
