@@ -29,7 +29,7 @@ class Cell(object):
         self.cell_size_invert = np.zeros(3, np.float64)
         self.simulation = simulation
     
-    # atoms set 1 are the tips, atom set 2 are the endings
+    # Atom set 1 are the tips, atom set 2 are the origins
     def distances(self, atom_set_1, atom_set_2):
         
         distances = np.zeros((len(atom_set_1),len(atom_set_2)),np.float64)
@@ -45,7 +45,7 @@ class Cell(object):
                 
         return distances, distance_vectors
 
-    # Distance vector, x1 is tip, x2 is ending
+    # Distance vector, x1 is the tip, x2 is origin
     def distance_vector(self, x1, x2): 
         # dx1x2 = x1 - x2
         #for i in range(0,len(x1)):

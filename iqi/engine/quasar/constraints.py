@@ -98,6 +98,9 @@ class Constraints(object):
             self.spheres[min_index].contained_atom_distances.append(min_value)
             self.spheres[min_index].contained_atom_distance_vectors.append(distance_vectors[min_index,i,:])
 
-        # Computing the radii of the spheres
+        # Computing the radii of the spheres and logging them
+        sphere_id = 0
         for sphere in self.spheres:
             sphere.radius_QC = max(sphere.contained_atom_distances)
+            info("Sphere " + str(sphere_id) + ' radius: {:06.3f}'.format(sphere.radius_QC), self.simulation.verbosity.medium)
+            sphere_id += 1

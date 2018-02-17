@@ -1,5 +1,5 @@
 """
-Copyright (C) 2016, Christoph Gorgulla
+    Copyright (C) 2016, Christoph Gorgulla
 
 This file is part of i-QI.
 
