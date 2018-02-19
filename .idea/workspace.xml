@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="af054743-1dab-42aa-bf7d-ea24b7c9818d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iqi/engine/simulation.py" afterPath="$PROJECT_DIR$/iqi/engine/simulation.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iqi/engine/quasar/constraints.py" afterPath="$PROJECT_DIR$/iqi/engine/quasar/constraints.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iqi/engine/quasar/quasar.py" afterPath="$PROJECT_DIR$/iqi/engine/quasar/quasar.py" />
     </list>
     <ignored path="i-QI.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,8 +35,8 @@
       <file leaf-file-name="simulation.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/iqi/engine/simulation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1125">
-              <caret line="75" column="100" lean-forward="true" selection-start-line="75" selection-start-column="100" selection-end-line="75" selection-end-column="100" />
+            <state relative-caret-position="448">
+              <caret line="73" column="70" lean-forward="false" selection-start-line="73" selection-start-column="64" selection-end-line="73" selection-end-column="70" />
               <folding>
                 <element signature="e#670#700#0" expanded="true" />
               </folding>
@@ -66,10 +67,28 @@
       <file leaf-file-name="quasar.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/iqi/engine/quasar/quasar.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="82" column="28" lean-forward="false" selection-start-line="82" selection-start-column="28" selection-end-line="82" selection-end-column="28" />
+            <state relative-caret-position="544">
+              <caret line="65" column="62" lean-forward="false" selection-start-line="65" selection-start-column="62" selection-end-line="65" selection-end-column="62" />
               <folding>
                 <element signature="e#673#707#0" expanded="true" />
+                <marker date="1519048422112" expanded="true" signature="860:6560" ph="..." />
+                <marker date="1519048422112" expanded="true" signature="912:2804" ph="..." />
+                <marker date="1519048422112" expanded="true" signature="2718:2804" ph="..." />
+                <marker date="1519048422112" expanded="true" signature="2940:6560" ph="..." />
+                <marker date="1519048422112" expanded="true" signature="3657:4749" ph="..." />
+                <marker date="1519048422112" expanded="true" signature="3736:4749" ph="..." />
+                <marker date="1519048422112" expanded="true" signature="3796:4749" ph="..." />
+                <marker date="1519048422112" expanded="true" signature="4215:4749" ph="..." />
+                <marker date="1519048422112" expanded="true" signature="4370:4749" ph="..." />
+                <marker date="1519048422112" expanded="true" signature="4433:4749" ph="..." />
+                <marker date="1519048422112" expanded="true" signature="5100:6233" ph="..." />
+                <marker date="1519048422112" expanded="true" signature="5175:6233" ph="..." />
+                <marker date="1519048422112" expanded="true" signature="5223:6233" ph="..." />
+                <marker date="1519048422112" expanded="true" signature="5660:6233" ph="..." />
+                <marker date="1519048422112" expanded="true" signature="5833:6233" ph="..." />
+                <marker date="1519048422112" expanded="true" signature="5914:6233" ph="..." />
+                <marker date="1519048422112" expanded="true" signature="6345:6560" ph="..." />
+                <marker date="1519048422112" expanded="true" signature="6379:6560" ph="..." />
               </folding>
             </state>
           </provider>
@@ -88,9 +107,24 @@
       <file leaf-file-name="constraints.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/iqi/engine/quasar/constraints.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1097">
-              <caret line="102" column="35" lean-forward="true" selection-start-line="102" selection-start-column="35" selection-end-line="102" selection-end-column="35" />
-              <folding />
+            <state relative-caret-position="120">
+              <caret line="50" column="30" lean-forward="true" selection-start-line="50" selection-start-column="30" selection-end-line="50" selection-end-column="30" />
+              <folding>
+                <marker date="1519048422117" expanded="true" signature="1174:4610" ph="..." />
+                <marker date="1519048422117" expanded="true" signature="1226:3184" ph="..." />
+                <marker date="1519048422117" expanded="true" signature="2224:2325" ph="..." />
+                <marker date="1519048422117" expanded="true" signature="2444:3184" ph="..." />
+                <marker date="1519048422117" expanded="true" signature="2478:3060" ph="..." />
+                <marker date="1519048422117" expanded="true" signature="2539:3060" ph="..." />
+                <marker date="1519048422117" expanded="true" signature="2582:3060" ph="..." />
+                <marker date="1519048422117" expanded="true" signature="2656:2874" ph="..." />
+                <marker date="1519048422117" expanded="true" signature="2904:3060" ph="..." />
+                <marker date="1519048422117" expanded="true" signature="3094:3184" ph="..." />
+                <marker date="1519048422117" expanded="true" signature="3228:4610" ph="..." />
+                <marker date="1519048422117" expanded="true" signature="3379:3527" ph="..." />
+                <marker date="1519048422117" expanded="true" signature="3887:4268" ph="..." />
+                <marker date="1519048422117" expanded="true" signature="4389:4610" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -198,14 +232,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>fields[</find>
-      <find>fields[0</find>
-      <find>fields[0]</find>
-      <find>fields[0][</find>
-      <find>fields[0][1</find>
-      <find>fields[0][1]</find>
-      <find>ch</find>
-      <find>ca</find>
       <find>chai</find>
       <find>c</find>
       <find>cha</find>
@@ -218,7 +244,6 @@
       <find>open(</find>
       <find>file_name</find>
       <find>cell</find>
-      <find>d</find>
       <find>deb</find>
       <find>debug</find>
       <find>Constraint</find>
@@ -228,7 +253,19 @@
       <find>atom</find>
       <find>xml_node</find>
       <find>atom_id</find>
+      <find>d</find>
+      <find>divi</find>
+      <find>divis</find>
+      <find>divisi</find>
+      <find>divisio</find>
+      <find>division</find>
+      <find>input_data_splitted</find>
+      <find>potential</find>
+      <find>self.input_data_splitted</find>
     </findStrings>
+    <replaceStrings>
+      <replace>input_data_splitted</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -279,10 +316,10 @@
         <option value="$PROJECT_DIR$/iqi/interfaces/serverinterface.py" />
         <option value="$PROJECT_DIR$/iqi/utils/various.py" />
         <option value="$PROJECT_DIR$/iqi/utils/__init__.py" />
-        <option value="$PROJECT_DIR$/iqi/engine/quasar/quasar.py" />
         <option value="$PROJECT_DIR$/iqi/engine/cell.py" />
-        <option value="$PROJECT_DIR$/iqi/engine/quasar/constraints.py" />
         <option value="$PROJECT_DIR$/iqi/engine/simulation.py" />
+        <option value="$PROJECT_DIR$/iqi/engine/quasar/quasar.py" />
+        <option value="$PROJECT_DIR$/iqi/engine/quasar/constraints.py" />
       </list>
     </option>
   </component>
@@ -800,7 +837,14 @@
       <option name="project" value="LOCAL" />
       <updated>1518896372641</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Bugfix simulation.py">
+      <created>1518902227053</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1518902227053</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView">
@@ -818,7 +862,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32858273" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28028503" sideWeight="0.50117785" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280507" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294753" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3294753" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32858273" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293745" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13890524" sideWeight="0.48177496" order="0" side_tool="false" content_ui="combo" />
@@ -895,7 +939,8 @@
     <MESSAGE value="Minor changes" />
     <MESSAGE value="Header changes" />
     <MESSAGE value="Printing sphere radii" />
-    <option name="LAST_COMMIT_MESSAGE" value="Printing sphere radii" />
+    <MESSAGE value="Bugfix simulation.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bugfix simulation.py" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1089,14 +1134,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iqi/utils/quit_simulation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="3" lean-forward="false" selection-start-line="0" selection-start-column="3" selection-end-line="0" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/iqi/utils/various.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1171,24 +1208,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iqi/engine/quasar/quasar.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="82" column="28" lean-forward="false" selection-start-line="82" selection-start-column="28" selection-end-line="82" selection-end-column="28" />
-          <folding>
-            <element signature="e#673#707#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iqi/engine/quasar/constraints.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1097">
-          <caret line="102" column="35" lean-forward="true" selection-start-line="102" selection-start-column="35" selection-end-line="102" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/iqi/utils/messages.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1635">
@@ -1197,10 +1216,69 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/iqi/utils/quit_simulation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="3" lean-forward="false" selection-start-line="0" selection-start-column="3" selection-end-line="0" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iqi/engine/quasar/quasar.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="65" column="62" lean-forward="false" selection-start-line="65" selection-start-column="62" selection-end-line="65" selection-end-column="62" />
+          <folding>
+            <element signature="e#673#707#0" expanded="true" />
+            <marker date="1519048422112" expanded="true" signature="860:6560" ph="..." />
+            <marker date="1519048422112" expanded="true" signature="912:2804" ph="..." />
+            <marker date="1519048422112" expanded="true" signature="2718:2804" ph="..." />
+            <marker date="1519048422112" expanded="true" signature="2940:6560" ph="..." />
+            <marker date="1519048422112" expanded="true" signature="3657:4749" ph="..." />
+            <marker date="1519048422112" expanded="true" signature="3736:4749" ph="..." />
+            <marker date="1519048422112" expanded="true" signature="3796:4749" ph="..." />
+            <marker date="1519048422112" expanded="true" signature="4215:4749" ph="..." />
+            <marker date="1519048422112" expanded="true" signature="4370:4749" ph="..." />
+            <marker date="1519048422112" expanded="true" signature="4433:4749" ph="..." />
+            <marker date="1519048422112" expanded="true" signature="5100:6233" ph="..." />
+            <marker date="1519048422112" expanded="true" signature="5175:6233" ph="..." />
+            <marker date="1519048422112" expanded="true" signature="5223:6233" ph="..." />
+            <marker date="1519048422112" expanded="true" signature="5660:6233" ph="..." />
+            <marker date="1519048422112" expanded="true" signature="5833:6233" ph="..." />
+            <marker date="1519048422112" expanded="true" signature="5914:6233" ph="..." />
+            <marker date="1519048422112" expanded="true" signature="6345:6560" ph="..." />
+            <marker date="1519048422112" expanded="true" signature="6379:6560" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iqi/engine/quasar/constraints.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="50" column="30" lean-forward="true" selection-start-line="50" selection-start-column="30" selection-end-line="50" selection-end-column="30" />
+          <folding>
+            <marker date="1519048422117" expanded="true" signature="1174:4610" ph="..." />
+            <marker date="1519048422117" expanded="true" signature="1226:3184" ph="..." />
+            <marker date="1519048422117" expanded="true" signature="2224:2325" ph="..." />
+            <marker date="1519048422117" expanded="true" signature="2444:3184" ph="..." />
+            <marker date="1519048422117" expanded="true" signature="2478:3060" ph="..." />
+            <marker date="1519048422117" expanded="true" signature="2539:3060" ph="..." />
+            <marker date="1519048422117" expanded="true" signature="2582:3060" ph="..." />
+            <marker date="1519048422117" expanded="true" signature="2656:2874" ph="..." />
+            <marker date="1519048422117" expanded="true" signature="2904:3060" ph="..." />
+            <marker date="1519048422117" expanded="true" signature="3094:3184" ph="..." />
+            <marker date="1519048422117" expanded="true" signature="3228:4610" ph="..." />
+            <marker date="1519048422117" expanded="true" signature="3379:3527" ph="..." />
+            <marker date="1519048422117" expanded="true" signature="3887:4268" ph="..." />
+            <marker date="1519048422117" expanded="true" signature="4389:4610" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/iqi/engine/simulation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1125">
-          <caret line="75" column="100" lean-forward="true" selection-start-line="75" selection-start-column="100" selection-end-line="75" selection-end-column="100" />
+        <state relative-caret-position="448">
+          <caret line="73" column="70" lean-forward="false" selection-start-line="73" selection-start-column="64" selection-end-line="73" selection-end-column="70" />
           <folding>
             <element signature="e#670#700#0" expanded="true" />
           </folding>

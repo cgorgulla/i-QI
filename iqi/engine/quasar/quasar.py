@@ -37,33 +37,33 @@ class Quasar(Potential):
         self.constraints = None
         self.total_energy = np.float64(0)
         self.pressure_virial_tensor = np.array([[0,0,0],[0,0,0],[0,0,0]], np.float64)
-        self.input_data_splitted = {}
+        input_data_splitted = {}
 
         # Loop for storing the inner xml tags of the input data
         for (name, xml_node) in inputdata.fields:
             if name == "constraints":
-                self.input_data_splitted["constraints"] = xml_node
+                input_data_splitted["constraints"] = xml_node
             elif name == "forceconstant":
-                self.input_data_splitted["forceconstant"] = xml_node
+                input_data_splitted["forceconstant"] = xml_node
             elif name == "force_distribution":
-                self.input_data_splitted["force_distribution"] = xml_node
+                input_data_splitted["force_distribution"] = xml_node
             elif name is not "_text":
                 xml_tag_error("<Potential>", self)
                 quit_simulation()
 
         # Initializing the instance variables
         # Initializing the constraints object
-        self.constraints = Constraints(self.input_data_splitted["constraints"], self.simulation)
+        self.constraints = Constraints(input_data_splitted["constraints"], self.simulation)
         # Setting the force constant
-        if is_number(self.input_data_splitted["forceconstant"].fields[0][1].strip()):
-            self.force_constant = np.float64(self.input_data_splitted["forceconstant"].fields[0][1].strip())
+        if is_number(input_data_splitted["forceconstant"].fields[0][1].strip()):
+            self.force_constant = np.float64(input_data_splitted["forceconstant"].fields[0][1].strip())
         else:
             xml_tag_error("<force constant>", self)
             quit_simulation()
 
         # Setting the force distribution
-        if self.input_data_splitted["force_distribution"].fields[0][1].strip() == "atom" or self.input_data_splitted["force_distribution"].fields[0][1].strip() == "molecule":
-            self.force_distribution = self.input_data_splitted["force_distribution"].fields[0][1].strip()
+        if input_data_splitted["force_distribution"].fields[0][1].strip() == "atom" or input_data_splitted["force_distribution"].fields[0][1].strip() == "molecule":
+            self.force_distribution = input_data_splitted["force_distribution"].fields[0][1].strip()
         else:
             xml_tag_error("<force_distribution>", self)
             quit_simulation()

@@ -39,7 +39,7 @@ class Constraints(object):
     def __init__(self, inputdata, simulation):
 
         # Instance variables
-        self.input_data_splitted = {}
+        input_data_splitted = {}
         self.constraints_file_name = None
         self.constraints_data = None
         self.spheres = []
@@ -49,15 +49,15 @@ class Constraints(object):
         # Loop for storing the xml tags of the input data
         for (name, xml_node) in inputdata.fields:
             if name == "file":
-                self.input_data_splitted["file"] = xml_node
+                input_data_splitted["file"] = xml_node
             elif name is not "_text":
                 xml_tag_error("<constraints>", self)
                 quit_simulation()
                 
         # Initializing the instance variables
-        if self.input_data_splitted["file"].attribs["type"] == "xml":
-            if self.input_data_splitted["file"].fields[0][0] == "_text":
-                self.constraints_file_name = self.input_data_splitted["file"].fields[0][1].strip()
+        if input_data_splitted["file"].attribs["type"] == "xml":
+            if input_data_splitted["file"].fields[0][0] == "_text":
+                self.constraints_file_name = input_data_splitted["file"].fields[0][1].strip()
         
         # Preparing the constraints input data as xml tree 
         with open(self.constraints_file_name, "r") as constraints_file:
