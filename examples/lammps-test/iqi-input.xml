@@ -1,0 +1,20 @@
+<simulation verbosity="debug">
+	<interface type="socket">
+		<socket type="inet">
+			<address>localhost</address>
+			<port>31415</port>
+		</socket>
+	</interface>
+   	<atoms>
+   		<type>
+   			<file type="pdbx">/home/alejandro/i-QI/github/i-QI/examples/test/molecule.pdbx</file>
+		</type>
+   	</atoms>
+	<potential type="QUASAR">
+		<constraints>
+			<file type="xml">/home/alejandro/i-QI/github/i-QI/examples/test/constraints.xml</file>
+		</constraints>
+		<forceconstant>0.001</forceconstant>
+		<force_distribution>molecule</force_distribution>
+	</potential>
+</simulation>

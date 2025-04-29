@@ -1,0 +1,15 @@
+units real
+atom_style atomic
+
+read_data molecule.data
+
+pair_style lj/cut 10.0
+pair_coeff * * 0.1 3.5
+
+neighbor 2.0 bin
+neigh_modify delay 0 every 1 check yes
+
+fix 1 all ipi localhost 31415
+
+thermo 10
+run 1000

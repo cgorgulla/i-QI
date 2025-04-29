@@ -104,3 +104,4 @@ class Constraints(object):
             sphere.radius_QC = max(sphere.contained_atom_distances)
             info("Sphere " + str(sphere_id) + ' radius: {:06.3f}'.format(sphere.radius_QC), self.simulation.verbosity.medium)
             sphere_id += 1
+

@@ -21,7 +21,7 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 from iqi.engine.atoms import *
 from iqi.interfaces.serverinterface import * 
 from iqi.engine.cell import *
-from iqi.interfaces.socketinterface import SocketInterface
+from iqi.interfaces.socketinterface import SocketInterface, Message
 from iqi.utils.quit_simulation import *
 from enum import Enum
 
@@ -80,16 +80,17 @@ class Simulation(object):
         step_counter = 1
         while True:
             message = self.server_interface.recv_message()
-            
-            if message == InterfaceMessages.IN_STATUS:                
+            #if message == InterfaceMessages.IN_STATUS:
+            if message == "STATUS":
                 if self.status == self.Status.needinit:
                     self.server_interface.send_message(InterfaceMessages.OUT_NEEDINIT)
                 elif self.status == self.Status.havedata:
                     self.server_interface.send_message(InterfaceMessages.OUT_HAVEDATA)
                 elif self.status == self.Status.ready:
                     self.server_interface.send_message(InterfaceMessages.OUT_READY)
-                    
-            elif message == InterfaceMessages.IN_INIT:      
+
+            #elif message == InterfaceMessages.IN_INIT:
+            elif message == "INIT":
                 self.server_interface.recv_init()
                 self.status = self.Status.ready
             
@@ -100,22 +101,23 @@ class Simulation(object):
                 self.potential.compute_interactions()
                 self.status = self.Status.havedata
                         
-            elif message == InterfaceMessages.IN_GETFORCE:               
+            elif message == InterfaceMessages.IN_GETFORCE:
                 self.server_interface.send_message(InterfaceMessages.OUT_FORCEREADY)
                 self.server_interface.send_all(self.potential.total_energy, "total energy")
                 self.server_interface.send_all(self.atoms.total_number, "number of atoms")
                 self.server_interface.send_all(self.potential.forces.flatten(), "forces")
                 self.server_interface.send_all(self.potential.pressure_virial_tensor, "virial tensor")
-                self.server_interface.send_all(np.int32(1), "size of extra-string") # size of extra string
-                self.server_interface.send_all(" ", "extra string") # extra string
+                self.server_interface.send_extra({" ": "extra string"})# extra string               
+                #self.server_interface.send_all(np.int32(1), "size of extra-string") # size of extra string
+                #self.server_interface.send_all(" ", "extra string") # extra string
                 self.status = self.Status.ready
                 if self.verbosity.high:
-                    print "\n\nForces of timestep " + str(step_counter)
-                    print "-------------------------------------------------------------------------------------------------"
+                    print("\n\nForces of timestep " + str(step_counter))
+                    print("-------------------------------------------------------------------------------------------------")
                     print("Atom-Index          X-coordinate          Y-coordinate          Z-coordinate")
                     for i in range(1, self.atoms.total_number + 1):
-                        print("%10d          %12.5e          %12.5e          %12.5e" % (i, self.potential.forces[i-1,0], self.potential.forces[i-1,1], self.potential.forces[i-1,2]))
-                    print "-------------------------------------------------------------------------------------------------"
+                        print(("%10d          %12.5e          %12.5e          %12.5e" % (i, self.potential.forces[i-1,0], self.potential.forces[i-1,1], self.potential.forces[i-1,2])))
+                    print("-------------------------------------------------------------------------------------------------")
                     step_counter += 1
 
             elif message == InterfaceMessages.IN_EXIT:
