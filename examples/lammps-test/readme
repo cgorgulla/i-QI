@@ -1,0 +1,8 @@
+Run i-PI:
+i-pi ipi-input.xml
+
+Run LAMMPS:
+lmp -in lammps.in
+
+Run i-QI:
+python ../../i-qi.py iqi-input.xml

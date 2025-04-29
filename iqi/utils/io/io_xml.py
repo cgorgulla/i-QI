@@ -107,7 +107,7 @@ class xml_handler(ContentHandler):
       """
 
       #creates a new node
-      newnode = xml_node(attribs=dict((k,attrs[k]) for k in attrs.keys()), name=name, fields=[])
+      newnode = xml_node(attribs=dict((k,attrs[k]) for k in list(attrs.keys())), name=name, fields=[])
       #adds it to the list of open nodes
       self.open.append(newnode)
       #adds it to the list of fields of the parent tag
@@ -286,7 +286,7 @@ def read_list(data, delims="[]", split=",", strip=" \n\t'"):
    
    rlist = data[begin+1:end].split(split)
    for i in range(len(rlist)):
-      rlist[i] = rlist[i].strip(strip)
+      rlist[i] = rlist[i].stripxgot(strip)
 
    # handles empty lists correctly
    if len(rlist) == 1 and rlist[0] == "":
@@ -373,14 +373,14 @@ def read_dict(data, delims="{}", split=",", key_split=":", strip=" \n\t"):
       return data.strip(strip)
    rdict = {}
    for s in rlist:
-      rtuple = map(mystrip,s.split(key_split))      
+      rtuple = list(map(mystrip,s.split(key_split)))      
       if not len(rtuple) == 2:
          raise ValueError("Format for a key:value format is wrong for item " + s)
       rdict[rtuple[0]] = rtuple[1]
       
    return rdict   
       
-readtype_funcs = {np.ndarray: read_array, dict: read_dict, float: read_float, int: read_int, bool: read_bool, str: string.strip, tuple: read_tuple, np.uint : read_int}
+readtype_funcs = {np.ndarray: read_array, dict: read_dict, float: read_float, int: read_int, bool: read_bool, str: str.strip, tuple: read_tuple, np.uint : read_int}
 
 def write_type(type, data):
    """Writes a formatted string from a value of a specified type.
@@ -497,4 +497,5 @@ def write_dict(data, delims="{}"):
    rstr += delims[1]
    return rstr
 
-writetype_funcs = {float: write_float, dict: write_dict, int: str, bool: write_bool, str: string.strip, tuple: write_tuple, np.uint : str}
+writetype_funcs = {float: write_float, dict: write_dict, int: str, bool: write_bool, str: str.strip, tuple: write_tuple, np.uint : str}
+

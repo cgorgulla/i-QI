@@ -43,16 +43,16 @@ def main(file_name):
 
     # Displaying initial information
     if simulation.verbosity.low:
-        print "i-QI has being started"
-        print "The input file used is: "+ file_name
+        print("i-QI has being started")
+        print("The input file used is: "+ file_name)
         
     # Displaying the input file
     if simulation.verbosity.medium:
-        print "\n *****  Beginning of Input file content  ***** "
+        print("\n *****  Beginning of Input file content  ***** ")
         with open(file_name, "r") as inputfile:
             for line in inputfile.readlines():
-                print line,
-        print "\n *****   End of input file content   ***** "
+                print(line, end=' ')
+        print("\n *****   End of input file content   ***** ")
     
     # Running the simulation
     simulation.run()
@@ -66,3 +66,4 @@ if __name__ == '__main__':
         help()
     else:
         main(sys.argv[1])
+

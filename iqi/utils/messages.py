@@ -114,13 +114,13 @@ verbosity = Verbosity()
 def help():
     """Prints out a help string."""
 
-    print """Usage: iqi <input filename> """
+    print("""Usage: iqi <input filename> """)
 
 
 def program_heading():
     """Prints out a banner."""
 
-    print """
+    print("""
 
 
 
@@ -134,7 +134,7 @@ def program_heading():
          *****         *******     *******                 A QM/MM client for i-PI
                            ***                       
     ================================================================================
-       """
+       """)
 
 
 def info(text="", show=True):
@@ -148,7 +148,7 @@ def info(text="", show=True):
 
     if not show:
         return
-    print text
+    print(text)
     
 
 
@@ -166,4 +166,5 @@ def warning(text="", show=True):
         return
     if verbosity.debug:
         traceback.print_stack(file=sys.stdout)
-    print " !W! " + text
+    print(" !W! " + text)
+

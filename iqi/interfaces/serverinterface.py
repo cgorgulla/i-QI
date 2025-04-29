@@ -24,20 +24,33 @@ __all__ = ["InterfaceMessages", "ServerInterface"]
 class InterfaceMessages(object):
 
     MESSAGE_LENGTH = 12
-
-    # Recognized incoming messages
-    IN_INIT = "INIT        "
-    IN_STATUS = "STATUS      "
-    IN_POSDATA = "POSDATA     "
-    IN_GETFORCE = "GETFORCE    "
-    IN_EXIT = "EXIT        "
+    #ajg7
+#    # Recognized incoming messages
+#    IN_INIT = "INIT        "
+#    IN_STATUS = "STATUS      "
+#    IN_POSDATA = "POSDATA     "
+#    IN_GETFORCE = "GETFORCE    "
+#    IN_EXIT = "EXIT        "
+#    
+#    # Outgoing messages
+#    OUT_NEEDINIT = "NEEDINIT    "
+#    OUT_READY = "READY       "
+#    OUT_HAVEDATA = "HAVEDATA    "
+#    OUT_FORCEREADY = "FORCEREADY  "
+#
+        # Recognized incoming messages
+    IN_INIT = "INIT"
+    IN_STATUS = "STATUS"
+    IN_POSDATA = "POSDATA"
+    IN_GETFORCE = "GETFORCE"
+    IN_EXIT = "EXIT"
     
     # Outgoing messages
-    OUT_NEEDINIT = "NEEDINIT    "
-    OUT_READY = "READY       "
-    OUT_HAVEDATA = "HAVEDATA    "
-    OUT_FORCEREADY = "FORCEREADY  "
-        
+    OUT_NEEDINIT = "NEEDINIT"
+    OUT_READY = "READY"
+    OUT_HAVEDATA = "HAVEDATA"
+    OUT_FORCEREADY = "FORCEREADY"
+
 
 class ServerInterface(object):
     
@@ -54,4 +67,7 @@ class ServerInterface(object):
         pass
 
     def send_message(self, outgoing_data):
+        pass
+
+    def send_extra(self, extra_dict):
         pass
